@@ -3378,8 +3378,8 @@ try_this_zone:
 							}else if(weight == 400){
 								atomic_inc(&zone->zone_pgdat->nr_pages_400);
 								//zone->zone_pgdat->nr_pages[0]+=1;
-							}else if (weight ==800){
-								atomic_inc(&zone->zone_pgdat->nr_pages_400);
+							}else if(weight == 800){
+								atomic_inc(&zone->zone_pgdat->nr_pages_800);
 								//zone->zone_pgdat->nr_pages[0]+=1;
 							}
 //							printk("100 %lld\t\n",zone->zone_pgdat->nr_pages);

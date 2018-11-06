@@ -1295,19 +1295,21 @@ static unsigned long shrink_page_list(struct list_head *page_list,
 			goto keep_locked;
 
 		/*kwonje*/
+		
 		if(current_is_kswapd()&&page->weight!=100&&page_is_file_cache(page)){
 			base = atomic_read(&pgdat->nr_pages_100);
 
 			if(page->weight == 200){
 				target=atomic_read(&pgdat->nr_pages_200);
 				if(target/base<2&&target<=250000){
-					//printk("target: %lld and base: %lld\n",target,base);
+					//printk("2. target: %lld and base: %lld\n",target,base);
 					goto keep_locked;
 				}
 			}else if(page->weight == 400){
 				target=atomic_read(&pgdat->nr_pages_400);
 
 				if(target/base<4&&target<=500000){
+					//printk("4. target: %lld and base: %lld\n",target,base);
 					goto keep_locked;
 				}
 
@@ -1315,6 +1317,7 @@ static unsigned long shrink_page_list(struct list_head *page_list,
 				target=atomic_read(&pgdat->nr_pages_800);
 
 				if(target/base<8&&target<=1000000){
+					//printk("8. target: %lld and base: %lld\n",target,base);
 					goto keep_locked;
 				}
 			}
